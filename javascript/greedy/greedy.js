@@ -9,7 +9,7 @@ const solution = input => {
         coin_cnt += Math.floor(c/coin);
         console.log(coin,Math.floor(c/coin))
         c %= coin;
-    }
+    }//화폐 종류만큼 반복 수행 종류가 K개면 시간 복잡도 O(K)
     console.log(`총 동전 개수 = ${coin_cnt}`)
 }
 solution(input);
