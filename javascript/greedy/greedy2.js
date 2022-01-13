@@ -9,6 +9,11 @@ const solution = input => {
     const second = nums[N-2];
 
     result = 0;
+    //반복 수열 k+1 크기 배열 [f,f,f,s]
+    //const count = Math.floor((M/(K+1))*k) 수열 반복 횟수 * k = first의 개수
+    //const count += M%(K+1) 정확히 안 나눠졌을 때 나머지는 모두 큰 수임 정확히 나눠져야 second 포함됨
+    //result += count*first 가장 큰 수 더하기
+    //result += (m - count)*second -> count == first의 개수 then m - count == second 개수
 
     while(true){
         for(let i = 0; i < K; i++){ //가장 큰 수 k번 반복
@@ -21,5 +26,6 @@ const solution = input => {
         M -= 1;
     }
     console.log(result)
+
 }
 solution(input);
