@@ -3,6 +3,7 @@ const filePath = process.platform === 'linux' ? 'dev/stdin' : './input.txt';
 let input = fs.readFileSync(filePath).toString().trim().split('\n').map(item => item.trim());
 const arr = [5,7,9,0,3,1,6,2,4,8]
 const Quick_sort = (arr,start,end) => {
+    //O(nlgn)
     if(start >= end)return;
     const pivot = start;
     let left = start + 1;
