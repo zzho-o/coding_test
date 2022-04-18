@@ -19,11 +19,6 @@ const checked = new Array(g_map.length)
 for(let i = 0; i < g_map.length; i++){
     const tmp = new Array()
 }
-for(let i )
-checked[0][0] = 1;
-for(let i of checked){
-    console.log(i)
-}
 const turn_left = (i,j,dir) => {
     let lf_dir;
     if(i === 0){
