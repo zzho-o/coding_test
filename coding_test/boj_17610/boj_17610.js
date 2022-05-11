@@ -7,7 +7,9 @@ function solution(input){
     const t = input.shift().split(' ').map(item => +item);
     const dish = [];
     const asw = [];
-    s = t.reduce((pre,cur) => pre+cur,0)
-    console.log(s)
-    // for(let i = 0; i < solution;)
+    s = t.reduce((pre,cur) => pre+cur,0);
+    for(let i = 1; i <= s; i++){
+        let dish = i;
+        
+    }
 }

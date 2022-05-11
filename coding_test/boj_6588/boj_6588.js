@@ -21,7 +21,7 @@ function solution(input){
                     if(a === i + j)  {
                         asw.push(`${a} = ${i} + ${j}`)
                         toggle = 0
-                    }    
+                    }
                 }
             }
         }

@@ -15,7 +15,7 @@ const graph = [[],
 let answer = ''
 const checked = new Array(graph.length).fill(false);
 const dfs = (graph,v,visited) => {
-    visited[v] = true;
+    visited[v] = true;2
     answer += `${v} `
     for(let i of graph[v]){
         if(!visited[i]){
