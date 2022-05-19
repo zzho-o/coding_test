@@ -3,29 +3,66 @@ const filePath = process.platform === 'linux' ? 'dev/stdin' : './input.txt';
 const input = fs.readFileSync(filePath).toString().trim().split('\n').map(item => item.trim());
 solution(input)
 function solution(input){
-    const [N,M,K,X] = input.shift().split(' ').map(item => +item)
-    const arr = Array.from(new Array(N+1),() => new Array())
-    const distance = new Array(N+1).fill(-1)
-    distance[X] = 0
-    while(input.length){
-        const [A,B] = input.shift().split(' ').map(item => +item)
-        arr[A].push(B)
-    }
-    const q = [X]
-    while(q.length){
-        now = q.shift()
-        for(let next_node of arr[now]){
-            if(distance[next_node] === -1){
-                distance[next_node] = distance[now] + 1
+    const [n,m] = input.shift().split(' ').map(item => +item)
+    const temp = Array.from(new Array(n), () => new Array(m).fill(0))
+    const data = Array.from(new Array(n), () => input.shift().split(' ').map(item => +item))
+    const dx = [-1,0,1,0]
+    const dy = [0,1,0,-1]
+    let result = 0
+    function virus(x,y){
+        for(let i = 0; i < 4; i++){
+            const nx = x + dx[i]
+            const ny = y + dy[i]
+            if(nx >= 0 && nx < n && ny >= 0&& ny < m){
+                if(temp[nx][ny] === 0){
+                    temp[nx][ny] = 2
+                    virus(nx,ny)
+                }
             }
-            q.push(next_node)
         }
     }
-    const asw = []
-    for(let i in distance){
-        if(distance[i] === K ){
-            asw.push(i)
+    function score(){
+        let score = 0
+        for(let i = 0; i < n; i++){
+            for(let j = 0; j < m; j++){
+                temp[i][j] === 0 ? score++ : null
+            }
+        }
+        return score
+    }
+    function dfs(cnt){
+        if(cnt === 3){
+            for(let i = 0; i < n; i++){
+                temp[i] = [...data[i]]
+            }
+            for(let i = 0; i < n; i++){
+                for(let j = 0; j < m; j++){
+                    temp[i][j] === 2 ? virus(i,j) : null
+                }
+            }
+            result = Math.max(result,score())
+            return
+        }
+        for(let i = 0; i < n; i++){
+            for(let j = 0; j < m; j++){
+                if(data[i][j] === 0){
+                    data[i][j] = 1
+                    cnt++
+                    dfs(cnt)
+                    data[i][j] = 0
+                    cnt--
+                }
+            }
         }
     }
-    asw.length === 0 ? console.log(-1) : console.log(asw.join('\n'))
+    dfs(0)
+    console.log(result)
 }
+// 7 7
+// 2 0 0 0 1 1 0
+// 0 0 1 0 1 2 0
+// 0 1 1 0 1 0 0
+// 0 1 0 0 0 0 0
+// 0 0 0 0 0 1 1
+// 0 1 0 0 0 0 0
+// 0 1 0 0 0 0 0

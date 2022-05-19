@@ -12,7 +12,7 @@ const rotate = (key) => {
     }
     return newKey;
   };
-  
+
   function isAnswer(newArr, key_len, arr_len) {
     for (let i = key_len - 1; i <= arr_len - key_len; i++) {
       for (let j = key_len - 1; j <= arr_len - key_len; j++) {
@@ -35,7 +35,7 @@ const rotate = (key) => {
         arr[i][j] = lock[i - key_len + 1][j - key_len + 1];
       }
     }
-  
+
     for (let rot = 0; rot < 4; rot++) {
       key = rotate(key);
   
