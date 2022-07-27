@@ -46,25 +46,36 @@
 // //     })
 // // })
 //;/////
-function hello(){
-    return 'hello';
-}
+// function hello(){
+//     return 'hello';
+// }
 
-async function helloAsync(){
-    await delay(3000); // 비동기 함수가 동기처럼 사용 됨 and async 붙은 함수에서만 사용 가능
-    return "hello async"
-    // return delay(3000).then(() =>{
-    //     return 'hello Async'
-    // });
-}
+// async function helloAsync(){
+//     await delay(3000); // 비동기 함수가 동기처럼 사용 됨 and async 붙은 함수에서만 사용 가능
+//     return "hello async"
+//     // return delay(3000).then(() =>{
+//     //     return 'hello Async'
+//     // });
+// }
 
-async function main() {
-    const res = await helloAsync();
-    console.log(res);
-}
-main()
-function delay(ms) {
-    return new Promise(resolve => {
-        setTimeout(resolve, ms);
-    })
+// async function main() {
+//     const res = await helloAsync();
+//     console.log(res);
+// }
+// main()
+// function delay(ms) { 
+//     return new Promise(resolve => {
+//         setTimeout(resolve, ms);
+//     })
+// }
+
+let response = fetch("https://jsonplaceholder.typicode.com/posts").then(res => {console.log(res)})
+
+function a() 
+{
+
+
+
+
+
 }
